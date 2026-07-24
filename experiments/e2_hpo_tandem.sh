@@ -9,12 +9,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-export PKT_HPO_RUNS="${PKT_HPO_RUNS:-40}"      # configs per model (x2 models x2 tasks)
-# Optional levers to cut wall-time (uncomment / override). The MAIN lever is patience:
-# with the default (50 evals) early stopping never triggers inside 200 epochs, so every run
-# burns the full budget. patience=10 lets plateaued runs stop early — big saving.
-# export PKT_HPO_PATIENCE="${PKT_HPO_PATIENCE:-10}"  # early stopping actually trims runs
-# export PKT_HPO_EPOCHS="${PKT_HPO_EPOCHS:-150}"     # optional harder cap (at 200 curves still climb)
+export PKT_HPO_RUNS="${PKT_HPO_RUNS:-40}"          # configs per model (x2 models x2 tasks)
+# Early stopping is the main time lever. From the E1 log a good config converges by ~epoch
+# 105 and would early-stop ~125; the tuning default (patience 50 evals) never triggers inside
+# 200 epochs, so every trial wastes the full budget. patience=6 (=~35 epochs of no gain) stops
+# plateaued trials ~epoch 125-140 -> ~35% faster, without cutting still-improving configs.
+export PKT_HPO_PATIENCE="${PKT_HPO_PATIENCE:-6}"   # evaluations (every 5 epochs) w/o improvement
+export PKT_HPO_EPOCHS="${PKT_HPO_EPOCHS:-200}"     # hard ceiling (rarely reached with the above)
 
 echo "[E2-tandem] PKT_HPO_RUNS=$PKT_HPO_RUNS per model  ->  $((PKT_HPO_RUNS*2)) runs/task, $((PKT_HPO_RUNS*4)) total"
 echo "[E2-tandem] === Task A (DTI) -> project RelationalPKT-DTI ==="
