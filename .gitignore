@@ -102,6 +102,14 @@ src/kg_autoencoder_complete.pkl
 figures/
 
 # ==========================================
+# Secrets — never commit
+# ==========================================
+setup_wandb.sh
+.netrc
+*.key
+wandb_key*
+
+# ==========================================
 # Whitelist (Do NOT ignore these)
 # ==========================================
 !dataset/DRUGBANK/uniprot_entry_names.json
