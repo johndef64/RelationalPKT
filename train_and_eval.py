@@ -563,11 +563,18 @@ def eval(model, flattened_features_per_type, train_index, edge_index, ent2id, re
         if not all_triplets:
             return []
         
-        all_triplets = torch.tensor(all_triplets).to(device)
-        
-        # Get prediction scores
-        scores = model.distmult(out, all_triplets)
-        scores = torch.sigmoid(scores)
+        all_triplets = torch.tensor(all_triplets)
+
+        # Score in batches and offload to CPU to avoid OOM on large head×tail grids
+        # (e.g. Task A ~3.7k compounds × ~3.5k proteins ≈ 13M triplets → ~6 GB in one shot).
+        score_batch = 200000
+        score_chunks = []
+        for start in range(0, all_triplets.size(0), score_batch):
+            batch_t = all_triplets[start:start + score_batch].to(device)
+            s = torch.sigmoid(model.distmult(out, batch_t))
+            score_chunks.append(s.detach().cpu())
+            del batch_t
+        scores = torch.cat(score_chunks)
         
         # Create ranked list of predictions
         ranked_predictions = []
@@ -843,19 +850,22 @@ def main(model_name, dataset_tsv, task, runs, epochs, patience, validation_size,
 
       # print(f"[i] Saving best model of run {i} to {run_model_save_path}")
 
-      print(f"[i] Evaluating model on entire dataset for ranking...")
-      # Eval model on entire dataset and get ranking
-      rank = eval(model, flattened_features_per_type, train_index, edge_index, ent2id, relation2id, change_points, task=task)
-      # Show better print predictions
-      top_p_num = min(10, len(rank))
-      print(f"\n[i] Top {top_p_num} predictions:")
-      for idx, pred in enumerate(rank[:top_p_num], 1):
-          print(f"  {idx}. Head: {pred['head']:30s} -> Tail: {pred['tail']:20s} | Confidence: {pred['confidence']:.4f}")
-      # Save ranking to JSON
-      ranking_save_path = run_model_save_path.replace(".pt", "_ranking.json")
-      with open(ranking_save_path, "w") as f:
-          json.dump(rank, f, indent=4)
-      print(f"[i] Saved ranking to {ranking_save_path}")
+      # Optional: full head×tail ranking after each run (heavy). Off by default —
+      # use drug_eval.py for batched, compound-centric ranking instead.
+      if getattr(args, 'rank_after_train', False):
+          print(f"[i] Evaluating model on entire dataset for ranking...")
+          # Eval model on entire dataset and get ranking
+          rank = eval(model, flattened_features_per_type, train_index, edge_index, ent2id, relation2id, change_points, task=task)
+          # Show better print predictions
+          top_p_num = min(10, len(rank))
+          print(f"\n[i] Top {top_p_num} predictions:")
+          for idx, pred in enumerate(rank[:top_p_num], 1):
+              print(f"  {idx}. Head: {pred['head']:30s} -> Tail: {pred['tail']:20s} | Confidence: {pred['confidence']:.4f}")
+          # Save ranking to JSON
+          ranking_save_path = run_model_save_path.replace(".pt", "_ranking.json")
+          with open(ranking_save_path, "w") as f:
+              json.dump(rank, f, indent=4)
+          print(f"[i] Saved ranking to {ranking_save_path}")
 
 
   metric_keys = ["Auroc", "Auprc", "MRR", "Hits@1", "Hits@3", "Hits@10"]
@@ -903,6 +913,10 @@ if __name__ == '__main__':
   parser.add_argument('--gamma', type=float, default=3.0, help='Gamma value of the focal loss')
   parser.add_argument('--alpha_adv', type=float, default=2.0, help='Alpha value for the hard-negative mining loss'), 
   parser.add_argument('--dry_run', action='store_true', help='If set, the ablation study will not save models or rankings, and will skip final evaluation.')
+  parser.add_argument('--rank_after_train', action='store_true',
+                      help='After each run, rank ALL task head×tail triplets and save a *_ranking.json. '
+                           'Off by default (heavy: materialises the full grid, e.g. ~13M for DTI). '
+                           'Prefer drug_eval.py for batched, compound-centric ranking.')
   parser.add_argument('--eval_filtered', action='store_true', default=True,
                       help='Use filtered evaluation metrics (standard KGE setting). '
                            'Ranks against all graph nodes with known positives masked. '

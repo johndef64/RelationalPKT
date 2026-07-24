@@ -25,6 +25,10 @@ HPO_TASK  = os.environ.get("PKT_TASK", "TARGET")
 HPO_EPOCHS   = int(os.environ.get("PKT_HPO_EPOCHS", "200"))
 HPO_PATIENCE = int(os.environ.get("PKT_HPO_PATIENCE", "50"))
 HPO_RUNS     = int(os.environ.get("PKT_HPO_RUNS", "100"))
+# Sweep-id persistence for crash-resume: created sweep ids are saved here; set
+# PKT_HPO_RESUME=1 to re-attach an agent to the saved sweep instead of creating a new one.
+HPO_RESUME   = os.environ.get("PKT_HPO_RESUME", "0") == "1"
+SWEEP_DIR    = os.path.join("experiments", "hpo_sweeps")
 #%%
 # Hyperparameter search space
 
@@ -518,28 +522,38 @@ def run_hyperparameter_optimization():
 			if 'dropout' in sweep_config['parameters']:
 				del sweep_config['parameters']['dropout']
 		
-		# Create sweep with model-specific project name
+		# Create sweep with model-specific project name (or re-attach to a saved one)
 		model_project = f"{PROJECT_NAME}-{model_name}"
-		sweep_id = wandb.sweep(
-			sweep_config, 
-			project=model_project,
-			entity=ENTITY
-		)
-		
-		print(f"Created sweep {sweep_id} for {model_name}")
+		os.makedirs(SWEEP_DIR, exist_ok=True)
+		id_path = os.path.join(SWEEP_DIR, f"{model_project}.txt")
+
+		if HPO_RESUME and os.path.exists(id_path):
+			sweep_id = open(id_path).read().strip()
+			print(f"[resume] re-attaching to existing sweep {sweep_id} for {model_name}")
+		else:
+			sweep_id = wandb.sweep(
+				sweep_config,
+				project=model_project,
+				entity=ENTITY
+			)
+			with open(id_path, "w") as f:
+				f.write(sweep_id)
+			print(f"Created sweep {sweep_id} for {model_name}  (saved -> {id_path})")
+
 		print(f"Project: {model_project}")
-		print(f"Run: wandb agent {ENTITY}/{model_project}/{sweep_id}")
-		
+		print(f"Resume later:  PKT_HPO_RESUME=1 python tuning_hyperparameter.py")
+		print(f"   (or directly: wandb agent {ENTITY}/{model_project}/{sweep_id})")
+
 		# Run the sweep (configurable via PKT_HPO_RUNS)
 		number_of_runs = HPO_RUNS
 		wandb.agent(
-			sweep_id, 
-			train_model, 
+			sweep_id,
+			train_model,
 			count=number_of_runs,
 			project=model_project,
 			entity=ENTITY
 		)
-		
+
 		print(f"Completed hyperparameter optimization for {model_name}")
 
 if __name__ == "__main__":
