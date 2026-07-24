@@ -113,10 +113,10 @@ TOPK         = 50
 CANDIDATES   = []           # [] = review ALL compounds; or pin a cohort:
                             #   ["Compound::CHEBI_28918", "Compound::CHEBI_45783", ...]
 ```
-then run it — it ranks the cohort (all compounds if `CANDIDATES` is empty), attaches the KG
-evidence and readable labels, and writes the review sheet:
+then run it via the wrapper (activates `gnn` for you) — it ranks the cohort (all compounds if
+`CANDIDATES` is empty), attaches the KG evidence and readable labels, and writes the review sheet:
 ```bash
-python expert_review_script.py
+bash experiments/expert_review.sh
 # -> models/<folder>/drug_eval_results/expert_review_task<A|B>_<ts>.csv
 ```
 
@@ -133,8 +133,14 @@ plus three EMPTY columns the expert fills in Excel/Sheets:
 Save the filled file, then aggregate it (expert-tier distribution, auto-vs-expert agreement,
 % plausible):
 ```bash
-python expert_review_script.py aggregate models/<folder>/drug_eval_results/expert_review_taskA_<ts>_filled.csv
+bash experiments/expert_review.sh aggregate models/<folder>/drug_eval_results/expert_review_taskA_<ts>_filled.csv
 ```
+
+> All experiment steps are bash `.sh` that auto-activate the `gnn` env via `config.sh`
+> (`e1`–`e4`, `expert_review.sh`, and `interpret.sh` for standalone interpretability) — so they
+> run without activating conda first. The `analysis/*.py` data-prep scripts are the exception:
+> run them once with `gnn` active. (Activation is best-effort; if `conda` isn't on PATH the
+> script falls back to the current Python.)
 The expert's judgement is knowledge *external* to the KG — that is what makes this step a real
 (non-circular) validation, with the `kg_evidence`/`auto_tier` columns acting only as triage to
 focus the expert on the strongest candidates first.
