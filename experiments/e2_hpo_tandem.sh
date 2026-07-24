@@ -10,9 +10,11 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 export PKT_HPO_RUNS="${PKT_HPO_RUNS:-40}"      # configs per model (x2 models x2 tasks)
-# Optional levers to cut wall-time (uncomment / override):
-# export PKT_HPO_EPOCHS="${PKT_HPO_EPOCHS:-120}"    # fewer epochs per HPO run
-# export PKT_HPO_PATIENCE="${PKT_HPO_PATIENCE:-10}" # make early stopping actually trigger
+# Optional levers to cut wall-time (uncomment / override). The MAIN lever is patience:
+# with the default (50 evals) early stopping never triggers inside 200 epochs, so every run
+# burns the full budget. patience=10 lets plateaued runs stop early — big saving.
+# export PKT_HPO_PATIENCE="${PKT_HPO_PATIENCE:-10}"  # early stopping actually trims runs
+# export PKT_HPO_EPOCHS="${PKT_HPO_EPOCHS:-150}"     # optional harder cap (at 200 curves still climb)
 
 echo "[E2-tandem] PKT_HPO_RUNS=$PKT_HPO_RUNS per model  ->  $((PKT_HPO_RUNS*2)) runs/task, $((PKT_HPO_RUNS*4)) total"
 echo "[E2-tandem] === Task A (DTI) -> project RelationalPKT-DTI ==="
