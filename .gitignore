@@ -1,0 +1,108 @@
+﻿# ==========================================
+# Python & Environment
+# ==========================================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints
+read.ipynb
+
+# ==========================================
+# IDEs & System Files
+# ==========================================
+.vscode/
+.idea/
+*.tmp
+*.bak
+bkps/
+archives/
+archive*
+
+# ==========================================
+# ML Tracking & Logs
+# ==========================================
+wandb/
+logs/
+writes/
+docs/*
+
+# ==========================================
+# Data & Datasets
+# ==========================================
+# Ignore everything in dataset by default
+dataset/*
+
+# Specific dataset exclusions and raw files
+dataset/old_crossrefs/
+dataset/vitagraph.tsv
+dataset/uniprot_*
+
+# STRING database files
+dataset/STRING/*
+
+# PathogenKG files
+dataset/pathogenkg/VitaGraph_human_extended.tsv
+dataset/pathogenkg/PathogenKG_*
+
+# Specific text/variant outputs
+*.detailed.v*
+*.full.v*
+*.zip
+
+# ==========================================
+# Models & Code Development
+# ==========================================
+models/
+models_dev/
+dev/
+dev-variants/
+test/
+misc/
+paper/
+docs/*
+
+# Experimental / Local scripts
+bulk_replace*
+train_and_eval_drkg_reduced_extended*
+drug_rank*
+protein_similarity/
+scrapers/get_string__.py
+
+# ==========================================
+# PathogenKG-specific — NOT used by RelationalPKT
+# (bacterial KG construction, DRKG/PathogenKG tuning, paper assets;
+#  verified: none of these are imported by the RelationalPKT pipeline)
+# ==========================================
+# Bacterial KG construction (STRING / COG / GO / DrugBank)
+build_pathogenkg.py
+merge_pathogen_kgs.py
+generate_all_pathogenkg.py
+generate_all_pathogenkg.sh
+get_pathogenkg.py
+src/downloaders/
+src/drug-dataset/
+src/dataset-stats.py
+
+# Bacterial / DRKG tuning & evaluation utilities
+# (RelationalPKT uses experiments/ + tuning_hyperparameter.py instead)
+tuning_dataset.py
+tuning_dataset_drkg.py
+model_eval.py
+evaluate_ranking.py
+kg_stats_visualization.py
+drug_eval_script.py
+drkg_relation_glossary.tsv
+
+# Graph-autoencoder experiment (unused)
+src/gae.py
+src/kg_autoencoder_complete.pkl
+
+# PathogenKG paper figures
+figures/
+
+# ==========================================
+# Whitelist (Do NOT ignore these)
+# ==========================================
+!dataset/DRUGBANK/uniprot_entry_names.json
+!dataset/DRUGBANK/taxons/drugbank_microorganisms_with_pathogen_status.csv

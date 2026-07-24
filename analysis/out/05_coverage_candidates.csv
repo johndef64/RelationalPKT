@@ -1,0 +1,25 @@
+role,source_type,predicate_label,target_type,edges,distinct_source,distinct_target
+ctx  PPI protein-protein,protein,molecularly interacts with,protein,617408,14208,14208
+ctx  disease->phenotype,disease,has phenotype,phenotype,427157,11763,10051
+ctx  drug->GO,chemical,molecularly interacts with,go,354353,1365,1928
+TARGET-B  drug->disease (treats),chemical,is substance that treats,disease,168157,4328,4480
+ctx  variant->gene,variant,causally influences,gene,144892,144892,3617
+ctx  protein->GO (process),protein,participates in,go,129189,17385,12311
+ctx  protein->pathway,protein,participates in,pathway,117179,10502,2492
+TARGET-B' drug->phenotype (treats),chemical,is substance that treats,phenotype,109818,4094,1731
+ctx  gene->pathway,gene,participates in,pathway,104678,10358,1807
+ctx  protein->GO (component),protein,located_in,go,82463,18434,1752
+alt DTI   drug->protein (broad),chemical,interacts with,protein,71315,4265,7903
+ctx  protein->GO (function),protein,has function,go,69726,17777,4424
+ctx variant->disease,variant,causes or contributes to condition,disease,43013,14693,3677
+chem-chem ChEBI role (NOT DDI),chemical,has_role,chemical,41433,23609,1282
+ctx  drug->pathway,chemical,participates in,pathway,29860,2240,2241
+TARGET-A  drug->protein (DTI),chemical,molecularly interacts with,protein,25713,3757,3496
+ctx  gene->protein (bridge),gene,has gene product,protein,19478,19273,19091
+chem-chem functional parent (NOT DDI),chemical,has functional parent,chemical,17602,15295,4992
+alt DTI   drug->gene (broad),chemical,interacts with,gene,16620,463,11908
+ctx  gene->disease (GDA),gene,causes or contributes to condition,disease,12757,5031,4398
+chem-chem conjugate acid (NOT DDI),chemical,is conjugate acid of,chemical,8162,8039,8079
+ctx disease->gene (GDA),disease,disease has basis in dysfunction of,gene,4494,4460,3348
+chem-chem has part (NOT DDI),chemical,has part,chemical,3879,3056,3359
+chem-chem enantiomer (NOT DDI),chemical,is enantiomer of,chemical,2654,2654,2654

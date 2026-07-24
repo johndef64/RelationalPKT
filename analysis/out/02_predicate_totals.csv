@@ -1,0 +1,288 @@
+predicate_label,count
+type,4550215
+molecularly interacts with,1384824
+located_in,689141
+location_of,688940
+phenotype of,428374
+has phenotype,428374
+has participant,381760
+participates in,381721
+is treated by substance,279052
+is substance that treats,279052
+transcribed from,182692
+transcribed to,182692
+interacts with,176638
+causally influences,145129
+causally influenced by,145129
+part of,89399
+only_in_taxon,86318
+causes or contributes to condition,83530
+has function,72230
+function of,72227
+ribosomal translation of,44205
+ribosomally translates to,44205
+has_role,43444
+derives_from,33680
+has_quality,33365
+has part,25399
+has_gene_template,19848
+has gene product,19521
+gene product of,19521
+has functional parent,17871
+has component,17100
+is disease model for,8598
+is conjugate acid of,8184
+is conjugate base of,8184
+has modifier,6311
+inheres in,5157
+disease has basis in dysfunction of,4594
+regulates (processual),3620
+genetically interacts with,3386
+negatively regulates,3126
+positively regulates,3115
+disease has location,2757
+is enantiomer of,2656
+develops_from,1947
+is tautomer of,1782
+has parent hydride,1706
+is in cell line repository,1629
+immunizes against microbe,1369
+is substituent group from,1278
+disease has feature,1105
+characteristic of part of,926
+derives from patient having disease,889
+immunizes host,865
+composed primarily of,747
+realized in response to,737
+occurs in,658
+contributes to morphology of,650
+in taxon,617
+connects,587
+disease has infectious agent,471
+has disease,443
+adjacent to,366
+capable of,324
+part_of,322
+disease has basis in disruption of,315
+disease has inflammation site,256
+has muscle insertion,242
+branching_part_of,236
+has muscle origin,232
+disease arises from structure,217
+towards,215
+attached to,206
+has potential to develop into,199
+innervated_by,193
+expresses,173
+disease has primary infectious agent,159
+has exposure stimulus,156
+supplies,155
+has_part,152
+predisposes towards,151
+disease arises from feature,148
+output_of,146
+in lateral side of,141
+capable of part of,138
+extends_fibers_into,136
+disease has major feature,134
+has developmental contribution from,122
+vaccinated in route,120
+innervates,119
+continuous with,117
+disease disrupts,106
+produces,105
+tributary of,105
+existence starts during,104
+has plasma membrane part,95
+surrounds,94
+luminal space of,88
+drains,88
+connected to,87
+has skeleton,79
+has vaccine allergen,78
+transmitted by,75
+immediate transformation of,72
+skeleton of,71
+derived from ancestral fusion of,67
+in left side of,64
+bounding layer of,59
+produced by,59
+in right side of,58
+conduit for,58
+increased_in_magnitude_relative_to,57
+proximally connected to,56
+decreased_in_magnitude_relative_to,56
+disease shares features of,50
+has muscle antagonist,49
+realized in response to stimulus,49
+bearer of,49
+has vaccine antigen,48
+transformation of,47
+derived from cell,47
+surrounded by,42
+immediately_deep_to,40
+channel for,40
+has expression,38
+has_disease_location,35
+existence ends during,34
+has vaccine component,33
+distally connected to,33
+realized in,32
+induces immune profile,32
+intersects midsagittal plane of,32
+has_origin,30
+determined by,29
+contains process,29
+overlaps,26
+channels_from,25
+preceded by,24
+anteriorly connected to,22
+has output,21
+has member,20
+has vaccine adjuvant,20
+developmentally_induced_by,20
+subdivision of,19
+channels_into,18
+has gene mutation,18
+derived from anatomic part,17
+in posterior side of,17
+happens during,17
+has_low_plasma_membrane_amount,16
+has input,15
+in_anterior_side_of,15
+existence starts and ends during,15
+superficial_to,15
+has_high_plasma_membrane_amount,15
+has soma location,14
+disease causes feature,13
+deep to,13
+disease responds to,13
+contains,13
+site_of,13
+immediately superficial to,13
+has potential to developmentally contribute to,13
+immediately_preceded_by,12
+sexually_homologous_to,12
+has vaccine vector,12
+anterior_to,12
+preaxialmost part of,11
+simultaneous with,11
+in superficial part of,10
+dorsal to,10
+member of,10
+develops in,9
+protects,9
+formed as result of,9
+distalmost part of,9
+has causal agent,9
+develops_into,9
+posterior to,9
+<none>,9
+derived from organism,9
+in_deep_part_of,8
+in_central_side_of,8
+developmentally_replaces,8
+ventral to,8
+proximalmost part of,8
+transcribed_to,7
+disease causes dysfunction of,7
+has_completed,7
+in dorsal side of,6
+confers advantage in,6
+existence starts with,6
+adjacent_to,6
+is_distributed_by,6
+reciprocal_of,6
+postaxialmost part of,5
+realizes,5
+has_cross_section,5
+in_ventral_side_of,5
+develops from part of,5
+existence ends with,5
+existence starts during or after,4
+functionally related to,4
+proximal to,4
+attaches_to_part_of,4
+indirectly_supplies,4
+disease caused by reactivation of latent infectious agent,4
+anastomoses with,4
+has material basis in gain of function germline mutation in,4
+filtered through,4
+vaccine organism has mutation,4
+in_innermost_side_of,4
+in_outermost_side_of,4
+has subunit vaccine protective antigen,4
+non_functional_homolog_of,4
+partially_surrounded_by,4
+serially homologous to,3
+induced by vaccination of,3
+member_of,3
+ends,3
+directly develops from,3
+starts,3
+results in formation of,3
+has subunit vaccine antigen,3
+precedes,3
+variant_of,3
+has defining ingredient,2
+lumen of,2
+has vaccine contraindication,2
+has disposition at all times,2
+disease_has_basis_in_development_of,2
+part of progression of disease,2
+derived from cell line,2
+has vaccine protective antigen,2
+has participant at all times,2
+is genome of organism,2
+during which ends,2
+interacts_with,2
+in distal side of,2
+interacts_with_an_exposure_receptor_via,2
+synapsed to,2
+is gene of organism,2
+distal_to,2
+disease triggers,2
+immunizes against disease,2
+in proximal side of,2
+has bacterial vaccine vector,1
+input of,1
+has onset,1
+existence ends during or before,1
+causal agent in,1
+immediately anterior to,1
+interacts_with_an_exposure stressor_via,1
+guided_by,1
+inheres in at all times,1
+concretizes,1
+transcribed_from,1
+has vaccine virmugen,1
+starts with,1
+ends with,1
+has habitat,1
+has occurrent part,1
+layer part of,1
+determined by part of,1
+involved_in,1
+immediately posterior to,1
+disease has basis in accumulation of,1
+cell line cell-induced adenocarcinoma formation in mouse,1
+contained_in,1
+existence overlaps,1
+induced by cell culture reagent,1
+DNA vaccine expresses protein antigen,1
+trunk_part_of,1
+has boost vaccine,1
+role of,1
+has food substance analog,1
+has viral vaccine vector,1
+synapsed by,1
+is ubiquitination,1
+has disposition,1
+posteriorly connected to,1
+ends_during,1
+aboral to,1
+is kinase activity,1
+overexpresses gene,1
+has prime vaccine,1
+has 2D boundary,1
+vaccine organism secretes,1

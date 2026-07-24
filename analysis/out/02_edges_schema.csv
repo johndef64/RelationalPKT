@@ -1,0 +1,813 @@
+source_type,predicate_label,target_type,count
+chemical,type,chemical,1267747
+rna,type,rna,975214
+protein,molecularly interacts with,protein,617408
+rna,located_in,anatomy,445453
+anatomy,location_of,rna,445453
+phenotype,phenotype of,disease,427157
+disease,has phenotype,phenotype,427157
+protein,type,chemical,377333
+go,molecularly interacts with,chemical,354353
+chemical,molecularly interacts with,go,354353
+cell,type,cell,317168
+variant,type,rna,293532
+protein,type,protein,291445
+go,type,go,275366
+disease,type,disease,202191
+rna,transcribed from,gene,182249
+gene,transcribed to,rna,182249
+disease,is treated by substance,chemical,168157
+chemical,is substance that treats,disease,168157
+variant,causally influences,gene,144892
+gene,causally influenced by,variant,144892
+protein,type,rna,133479
+protein,participates in,go,129189
+go,has participant,protein,129189
+protein,participates in,pathway,117179
+pathway,has participant,protein,117179
+chemical,is substance that treats,phenotype,109818
+phenotype,is treated by substance,chemical,109818
+pathway,has participant,gene,104678
+gene,participates in,pathway,104678
+anatomy,type,anatomy,97028
+phenotype,type,phenotype,88236
+protein,located_in,go,82463
+go,location_of,protein,82461
+gene,type,rna,72277
+chemical,interacts with,protein,71315
+protein,interacts with,chemical,71315
+go,function of,protein,69726
+protein,has function,go,69726
+protein,only_in_taxon,organism,65530
+cell,location_of,protein,63233
+protein,located_in,cell,63233
+cell,location_of,rna,57842
+rna,located_in,cell,57842
+cell,type,anatomy,45176
+protein,ribosomal translation of,rna,44103
+rna,ribosomally translates to,protein,44103
+variant,causes or contributes to condition,disease,43013
+chemical,has_role,chemical,41433
+protein,located_in,anatomy,38974
+anatomy,location_of,protein,38974
+cell,part of,organism,33488
+cell,derives_from,cell,33367
+pathway,has participant,chemical,29860
+chemical,participates in,pathway,29860
+cell,type,go,29213
+cell,part of,anatomy,27781
+cell,has_quality,phenotype,26048
+chemical,molecularly interacts with,protein,25713
+protein,molecularly interacts with,chemical,25713
+gene,causes or contributes to condition,phenotype,24604
+pathway,type,pathway,22243
+catalyst,type,catalyst,21163
+gene,only_in_taxon,organism,19890
+protein,has_gene_template,gene,19793
+gene,has gene product,protein,19478
+protein,gene product of,gene,19478
+chemical,has functional parent,chemical,17602
+gene,interacts with,chemical,16620
+chemical,interacts with,gene,16620
+pathway,has component,go,16006
+gene,causes or contributes to condition,disease,12757
+anatomy,part of,anatomy,12346
+protein,has part,chemical,10437
+pathway,type,go,9233
+go,part of,go,8661
+organism,type,organism,8600
+cell,is disease model for,disease,8579
+chemical,is conjugate acid of,chemical,8162
+chemical,is conjugate base of,chemical,8162
+protein,has part,gene,7760
+anatomy,type,organism,6476
+phenotype,has_quality,phenotype,5922
+cell,part of,disease,5061
+disease,disease has basis in dysfunction of,gene,4494
+phenotype,has modifier,phenotype,4431
+chemical,has part,chemical,3879
+phenotype,inheres in,anatomy,3727
+go,regulates (processual),go,3601
+gene,genetically interacts with,gene,3386
+go,negatively regulates,go,3121
+go,positively regulates,go,3107
+variant,causes or contributes to condition,phenotype,3002
+disease,disease has location,anatomy,2686
+chemical,is enantiomer of,chemical,2654
+pathway,has function,go,2422
+go,function of,pathway,2422
+unknown,type,chemical,1979
+go,molecularly interacts with,unknown,1915
+unknown,molecularly interacts with,go,1915
+catalyst,has_role,catalyst,1901
+chemical,is tautomer of,chemical,1780
+catalyst,type,chemical,1748
+unknown,type,rna,1737
+chemical,has parent hydride,chemical,1699
+cell,is in cell line repository,cell,1623
+anatomy,develops_from,anatomy,1623
+phenotype,part of,anatomy,1415
+chemical,molecularly interacts with,unknown,1395
+unknown,molecularly interacts with,chemical,1395
+go,type,anatomy,1388
+catalyst,type,rna,1372
+catalyst,immunizes against microbe,organism,1359
+chemical,is substituent group from,chemical,1276
+disease,has modifier,disease,1165
+catalyst,has part,catalyst,1152
+protein,type,go,1089
+protein,has component,protein,999
+catalyst,has_quality,catalyst,934
+cell,derives from patient having disease,disease,885
+phenotype,phenotype of,unknown,872
+unknown,has phenotype,phenotype,872
+phenotype,characteristic of part of,anatomy,867
+catalyst,immunizes host,organism,864
+gene,type,gene,848
+go,has part,go,811
+anatomy,only_in_taxon,organism,787
+disease,disease has feature,phenotype,765
+disease,has modifier,phenotype,677
+go,realized in response to,pathway,671
+anatomy,contributes to morphology of,anatomy,645
+anatomy,type,go,633
+anatomy,composed primarily of,anatomy,604
+anatomy,connects,anatomy,587
+phenotype,inheres in,go,525
+anatomy,location_of,unknown,499
+unknown,located_in,anatomy,499
+phenotype,inheres in,chemical,498
+disease,disease has infectious agent,organism,471
+anatomy,has part,anatomy,458
+catalyst,type,protein,445
+cell,has disease,disease,442
+go,type,unknown,439
+unknown,is substance that treats,disease,423
+disease,is treated by substance,unknown,423
+chemical,type,anatomy,410
+unknown,type,cell,406
+phenotype,has part,phenotype,403
+catalyst,type,gene,390
+chemical,is substance that treats,unknown,388
+unknown,is treated by substance,chemical,388
+phenotype,occurs in,anatomy,379
+unknown,type,disease,378
+unknown,type,protein,366
+organism,in taxon,organism,363
+anatomy,adjacent to,anatomy,358
+unknown,phenotype of,disease,343
+disease,has phenotype,unknown,343
+unknown,interacts with,protein,341
+protein,interacts with,unknown,341
+protein,molecularly interacts with,unknown,326
+unknown,molecularly interacts with,protein,326
+cell,develops_from,cell,321
+unknown,type,go,315
+protein,participates in,unknown,310
+unknown,has participant,protein,310
+disease,disease has basis in disruption of,go,309
+disease,disease has feature,disease,303
+catalyst,part of,catalyst,303
+anatomy,type,chemical,299
+phenotype,is treated by substance,unknown,266
+unknown,is substance that treats,phenotype,266
+chemical,type,protein,258
+go,occurs in,go,257
+chemical,has functional parent,unknown,257
+disease,disease has inflammation site,anatomy,255
+anatomy,in taxon,organism,250
+anatomy,has part,cell,247
+catalyst,type,go,245
+anatomy,has muscle insertion,anatomy,242
+anatomy,branching_part_of,anatomy,236
+unknown,transcribed to,rna,235
+rna,transcribed from,unknown,235
+anatomy,has muscle origin,anatomy,232
+pathway,has participant,unknown,208
+unknown,participates in,pathway,208
+unknown,transcribed from,gene,208
+gene,transcribed to,unknown,208
+anatomy,has_quality,phenotype,205
+anatomy,has potential to develop into,anatomy,198
+chemical,type,unknown,197
+unknown,location_of,protein,196
+protein,located_in,unknown,196
+anatomy,innervated_by,anatomy,193
+gene,causally influenced by,unknown,190
+unknown,causally influences,gene,190
+phenotype,towards,anatomy,187
+rna,part_of,rna,186
+anatomy,located_in,anatomy,183
+phenotype,inheres in,cell,180
+anatomy,attached to,anatomy,178
+chemical,type,phenotype,173
+rna,has_quality,rna,166
+unknown,has participant,gene,162
+chemical,type,rna,162
+gene,participates in,unknown,162
+disease,disease has primary infectious agent,organism,159
+disease,type,unknown,158
+disease,type,go,157
+anatomy,supplies,anatomy,155
+rna,has_part,rna,152
+cell,capable of,go,151
+disease,disease arises from structure,anatomy,151
+disease,predisposes towards,disease,150
+anatomy,in lateral side of,anatomy,141
+phenotype,type,go,141
+pathway,part_of,pathway,136
+unknown,type,anatomy,135
+anatomy,extends_fibers_into,anatomy,135
+go,type,organism,130
+anatomy,capable of,go,129
+protein,type,unknown,126
+cell,derives_from,disease,126
+anatomy,capable of part of,go,124
+anatomy,has developmental contribution from,anatomy,122
+unknown,located_in,cell,122
+cell,location_of,unknown,122
+catalyst,vaccinated in route,catalyst,120
+anatomy,innervates,anatomy,119
+anatomy,continuous with,anatomy,117
+protein,output_of,go,115
+disease,disease has major feature,phenotype,114
+catalyst,expresses,catalyst,113
+chemical,has exposure stimulus,chemical,107
+anatomy,tributary of,anatomy,105
+go,has participant,unknown,104
+unknown,participates in,go,104
+unknown,only_in_taxon,organism,102
+disease,disease disrupts,go,96
+anatomy,composed primarily of,cell,89
+phenotype,inheres in,protein,89
+anatomy,luminal space of,anatomy,88
+anatomy,drains,anatomy,88
+unknown,type,phenotype,86
+anatomy,connected to,anatomy,86
+unknown,location_of,rna,85
+rna,located_in,unknown,85
+anatomy,surrounds,anatomy,85
+cell,has plasma membrane part,protein,81
+anatomy,type,unknown,81
+cell,existence starts during,anatomy,80
+phenotype,inheres in,phenotype,79
+anatomy,has skeleton,anatomy,79
+chemical,type,go,78
+disease,disease arises from feature,disease,77
+disease,transmitted by,organism,75
+anatomy,skeleton of,anatomy,71
+protein,has component,chemical,71
+anatomy,immediate transformation of,anatomy,71
+disease,disease arises from feature,phenotype,69
+anatomy,derived from ancestral fusion of,anatomy,67
+disease,type,anatomy,66
+unknown,has function,go,66
+go,function of,unknown,66
+disease,disease arises from structure,cell,66
+catalyst,part of,organism,66
+catalyst,type,phenotype,65
+unknown,located_in,go,65
+go,location_of,unknown,65
+anatomy,type,phenotype,64
+anatomy,in left side of,anatomy,63
+rna,derives_from,rna,63
+anatomy,conduit for,anatomy,58
+anatomy,in right side of,anatomy,57
+disease,realized in response to,chemical,57
+phenotype,increased_in_magnitude_relative_to,phenotype,57
+anatomy,bounding layer of,anatomy,56
+anatomy,proximally connected to,anatomy,56
+phenotype,decreased_in_magnitude_relative_to,phenotype,56
+unknown,has_role,chemical,55
+cell,produces,protein,55
+disease,part of,disease,54
+cell,expresses,protein,53
+unknown,ribosomally translates to,protein,52
+catalyst,has part,chemical,52
+anatomy,produced by,anatomy,52
+protein,ribosomal translation of,unknown,52
+disease,disease has location,cell,50
+disease,disease shares features of,disease,50
+unknown,ribosomal translation of,rna,50
+rna,ribosomally translates to,unknown,50
+gene,causes or contributes to condition,unknown,49
+anatomy,has muscle antagonist,anatomy,49
+unknown,causes or contributes to condition,disease,48
+catalyst,has vaccine antigen,catalyst,47
+catalyst,has vaccine allergen,catalyst,47
+anatomy,transformation of,anatomy,47
+variant,causally influences,unknown,47
+cell,derived from cell,cell,47
+unknown,causally influenced by,variant,47
+phenotype,type,unknown,46
+cell,bearer of,phenotype,46
+organism,type,go,44
+anatomy,has part,go,44
+anatomy,surrounded by,anatomy,42
+anatomy,immediately_deep_to,anatomy,40
+catalyst,type,organism,39
+anatomy,type,disease,39
+cell,has expression,gene,38
+chemical,has exposure stimulus,anatomy,38
+unknown,part of,anatomy,37
+variant,causes or contributes to condition,unknown,37
+unknown,derives_from,cell,37
+unknown,has_quality,phenotype,37
+unknown,interacts with,chemical,36
+chemical,interacts with,unknown,36
+anatomy,channel for,anatomy,36
+unknown,part of,organism,36
+disease,disease has basis in dysfunction of,go,35
+cell,derives_from,anatomy,35
+pathway,type,unknown,35
+disease,disease has feature,anatomy,34
+chemical,type,organism,34
+anatomy,existence ends during,anatomy,34
+anatomy,distally connected to,anatomy,33
+catalyst,induces immune profile,catalyst,32
+anatomy,intersects midsagittal plane of,anatomy,32
+cell,type,organism,32
+phenotype,characteristic of part of,cell,32
+disease,has_disease_location,disease,31
+catalyst,has vaccine allergen,chemical,31
+rna,has_origin,rna,30
+chemical,has_role,unknown,29
+unknown,type,pathway,29
+disease,type,organism,28
+cell,has participant,protein,28
+phenotype,attached to,anatomy,28
+cell,has part,protein,28
+anatomy,contains process,go,28
+disease,realized in response to stimulus,chemical,28
+anatomy,composed primarily of,chemical,27
+anatomy,has participant,anatomy,27
+disease,has modifier,rna,27
+chemical,derives_from,chemical,27
+anatomy,produces,anatomy,26
+cell,has_quality,cell,26
+anatomy,channels_from,anatomy,25
+anatomy,composed primarily of,go,25
+cell,has part,go,24
+protein,capable of,go,24
+anatomy,has part,chemical,24
+disease,type,cell,23
+anatomy,anteriorly connected to,anatomy,22
+unknown,has_gene_template,gene,22
+disease,disease has basis in dysfunction of,anatomy,22
+protein,has_gene_template,unknown,22
+gene,has gene product,unknown,22
+unknown,gene product of,gene,22
+anatomy,part of,unknown,22
+organism,type,chemical,22
+anatomy,determined by,anatomy,21
+protein,gene product of,unknown,21
+disease,type,phenotype,21
+phenotype,characteristic of part of,go,21
+phenotype,part of,cell,21
+anatomy,overlaps,anatomy,21
+unknown,has gene product,protein,21
+disease,disease has major feature,disease,20
+unknown,causes or contributes to condition,phenotype,20
+catalyst,has vaccine component,organism,20
+disease,disease has basis in dysfunction of,protein,20
+catalyst,has vaccine adjuvant,catalyst,20
+anatomy,developmentally_induced_by,anatomy,20
+rna,type,go,20
+protein,type,anatomy,20
+anatomy,subdivision of,anatomy,19
+anatomy,output_of,go,19
+anatomy,has member,anatomy,19
+unknown,has part,chemical,19
+anatomy,preceded by,anatomy,19
+anatomy,channels_into,anatomy,18
+anatomy,inheres in,chemical,18
+anatomy,part of,organism,17
+phenotype,capable of,go,17
+anatomy,in posterior side of,anatomy,17
+go,happens during,go,17
+anatomy,has output,anatomy,16
+chemical,has_quality,phenotype,16
+anatomy,in_anterior_side_of,anatomy,15
+disease,realized in response to stimulus,anatomy,15
+anatomy,existence starts and ends during,anatomy,15
+anatomy,superficial_to,anatomy,15
+unknown,type,organism,15
+disease,realized in,go,14
+catalyst,occurs in,catalyst,14
+anatomy,has component,anatomy,14
+cell,derived from anatomic part,anatomy,14
+cell,produces,chemical,14
+phenotype,has_role,chemical,14
+unknown,type,catalyst,14
+cell,has soma location,anatomy,14
+anatomy,existence starts during,anatomy,14
+anatomy,deep to,anatomy,13
+disease,disease responds to,chemical,13
+phenotype,towards,chemical,13
+anatomy,part of,cell,13
+anatomy,has input,anatomy,13
+catalyst,has vaccine component,catalyst,13
+anatomy,derives_from,anatomy,13
+anatomy,site_of,go,13
+anatomy,immediately superficial to,anatomy,13
+chemical,is conjugate acid of,unknown,13
+unknown,is conjugate base of,chemical,13
+anatomy,immediately_preceded_by,anatomy,12
+unknown,has functional parent,chemical,12
+catalyst,has part,organism,12
+anatomy,inheres in,anatomy,12
+chemical,inheres in,anatomy,12
+anatomy,sexually_homologous_to,anatomy,12
+cell,participates in,go,12
+catalyst,has vaccine vector,catalyst,12
+cell,has_low_plasma_membrane_amount,protein,12
+unknown,molecularly interacts with,unknown,12
+catalyst,located_in,anatomy,12
+anatomy,anterior_to,anatomy,12
+cell,type,disease,12
+anatomy,has potential to developmentally contribute to,anatomy,12
+protein,has function,unknown,11
+anatomy,preaxialmost part of,anatomy,11
+cell,has plasma membrane part,go,11
+unknown,function of,protein,11
+protein,has_gene_template,protein,11
+anatomy,simultaneous with,go,11
+anatomy,part of,go,11
+anatomy,in superficial part of,anatomy,10
+anatomy,dorsal to,anatomy,10
+disease,disease disrupts,phenotype,10
+chemical,member of,chemical,10
+anatomy,location_of,anatomy,10
+phenotype,existence starts during,anatomy,10
+anatomy,contains,anatomy,10
+anatomy,develops in,anatomy,9
+catalyst,has gene mutation,catalyst,9
+catalyst,has gene mutation,gene,9
+unknown,is conjugate acid of,chemical,9
+anatomy,protects,anatomy,9
+cell,has_high_plasma_membrane_amount,go,9
+cell,only_in_taxon,organism,9
+anatomy,distalmost part of,anatomy,9
+chemical,is conjugate base of,unknown,9
+anatomy,participates in,go,9
+anatomy,capable of part of,phenotype,9
+go,type,chemical,9
+catalyst,immunizes against microbe,catalyst,9
+unknown,part of,go,9
+disease,disease has basis in dysfunction of,cell,9
+cell,develops_into,cell,9
+anatomy,posterior to,anatomy,9
+disease,disease has location,unknown,9
+catalyst,realized in,catalyst,9
+phenotype,towards,go,9
+unknown,is disease model for,disease,9
+anatomy,has_quality,anatomy,8
+unknown,part of,disease,8
+disease,disease causes feature,disease,8
+anatomy,in_deep_part_of,anatomy,8
+protein,part of,cell,8
+chemical,has exposure stimulus,phenotype,8
+unknown,has part,gene,8
+anatomy,in_central_side_of,anatomy,8
+protein,has part,protein,8
+anatomy,developmentally_replaces,anatomy,8
+anatomy,formed as result of,anatomy,8
+protein,part of,go,8
+anatomy,ventral to,anatomy,8
+anatomy,proximalmost part of,anatomy,8
+anatomy,has_role,chemical,8
+disease,disease has basis in dysfunction of,unknown,8
+anatomy,<none>,chemical,8
+unknown,has component,go,8
+go,part of,unknown,7
+gene,interacts with,unknown,7
+rna,transcribed_to,rna,7
+disease,realized in,phenotype,7
+cell,has_completed,go,7
+anatomy,surrounds,cell,7
+anatomy,output_of,anatomy,7
+unknown,interacts with,gene,7
+cell,expresses,gene,7
+cell,derived from organism,organism,7
+unknown,is in cell line repository,cell,6
+cell,located_in,disease,6
+phenotype,regulates (processual),phenotype,6
+anatomy,in dorsal side of,anatomy,6
+unknown,regulates (processual),go,6
+disease,disease has location,go,6
+anatomy,confers advantage in,anatomy,6
+unknown,has modifier,phenotype,6
+anatomy,existence starts with,anatomy,6
+unknown,disease has location,anatomy,6
+unknown,has participant,chemical,6
+rna,adjacent_to,rna,6
+anatomy,has part,protein,6
+catalyst,is_distributed_by,catalyst,6
+chemical,participates in,unknown,6
+go,regulates (processual),unknown,6
+phenotype,reciprocal_of,phenotype,6
+chemical,has part,unknown,5
+phenotype,type,anatomy,5
+disease,disease causes feature,phenotype,5
+anatomy,postaxialmost part of,anatomy,5
+phenotype,has_cross_section,phenotype,5
+phenotype,inheres in,unknown,5
+cell,is disease model for,unknown,5
+chemical,derives_from,anatomy,5
+anatomy,has causal agent,anatomy,5
+anatomy,in_ventral_side_of,anatomy,5
+catalyst,has participant,organism,5
+unknown,disease has basis in dysfunction of,gene,5
+anatomy,produces,protein,5
+anatomy,develops from part of,anatomy,5
+unknown,inheres in,anatomy,5
+chemical,has parent hydride,unknown,5
+anatomy,existence ends with,anatomy,5
+cell,has_high_plasma_membrane_amount,protein,5
+cell,part of,cell,5
+go,negatively regulates,unknown,4
+anatomy,part of,disease,4
+cell,type,unknown,4
+anatomy,existence starts during or after,anatomy,4
+anatomy,functionally related to,go,4
+disease,disease causes dysfunction of,cell,4
+go,positively regulates,unknown,4
+catalyst,preceded by,catalyst,4
+chemical,output_of,chemical,4
+anatomy,proximal to,anatomy,4
+anatomy,attaches_to_part_of,anatomy,4
+cell,adjacent to,anatomy,4
+anatomy,indirectly_supplies,anatomy,4
+disease,disease caused by reactivation of latent infectious agent,organism,4
+rna,overlaps,rna,4
+cell,produces,anatomy,4
+anatomy,anastomoses with,anatomy,4
+anatomy,determined by,organism,4
+anatomy,determined by,phenotype,4
+organism,type,unknown,4
+disease,has material basis in gain of function germline mutation in,gene,4
+disease,realized in response to stimulus,cell,4
+anatomy,channel for,cell,4
+anatomy,filtered through,anatomy,4
+phenotype,towards,cell,4
+cell,has part,phenotype,4
+chemical,has output,chemical,4
+anatomy,produced by,cell,4
+catalyst,vaccine organism has mutation,catalyst,4
+cell,is disease model for,cell,4
+phenotype,type,disease,4
+anatomy,in_innermost_side_of,anatomy,4
+phenotype,characteristic of part of,unknown,4
+anatomy,has causal agent,organism,4
+unknown,positively regulates,go,4
+protein,derives_from,protein,4
+anatomy,in_outermost_side_of,anatomy,4
+catalyst,has subunit vaccine protective antigen,catalyst,4
+cell,part of,unknown,4
+rna,non_functional_homolog_of,rna,4
+disease,realized in response to,go,4
+anatomy,partially_surrounded_by,anatomy,4
+anatomy,contributes to morphology of,unknown,4
+anatomy,has part,phenotype,3
+gene,type,go,3
+rna,contains,rna,3
+anatomy,serially homologous to,anatomy,3
+catalyst,induced by vaccination of,catalyst,3
+disease,realized in response to,phenotype,3
+rna,member_of,rna,3
+catalyst,type,unknown,3
+gene,has part,gene,3
+anatomy,ends,anatomy,3
+anatomy,starts,anatomy,3
+disease,disease has basis in disruption of,phenotype,3
+anatomy,results in formation of,anatomy,3
+unknown,derives from patient having disease,disease,3
+anatomy,occurs in,anatomy,3
+cell,part of,go,3
+cell,has plasma membrane part,unknown,3
+rna,type,protein,3
+unknown,type,unknown,3
+anatomy,precedes,anatomy,3
+chemical,has exposure stimulus,organism,3
+disease,type,chemical,3
+rna,variant_of,rna,3
+cell,participates in,cell,2
+chemical,has defining ingredient,chemical,2
+cell,has_low_plasma_membrane_amount,unknown,2
+chemical,is substituent group from,unknown,2
+anatomy,has participant,chemical,2
+anatomy,lumen of,anatomy,2
+disease,disease has basis in disruption of,gene,2
+unknown,inheres in,go,2
+unknown,function of,pathway,2
+catalyst,has vaccine contraindication,catalyst,2
+gene,has disposition at all times,gene,2
+chemical,produced by,organism,2
+cell,has_low_plasma_membrane_amount,go,2
+catalyst,has function,catalyst,2
+organism,type,catalyst,2
+disease,realized in response to,anatomy,2
+pathway,has function,unknown,2
+catalyst,type,anatomy,2
+disease,realized in,anatomy,2
+disease,disease_has_basis_in_development_of,anatomy,2
+protein,type,catalyst,2
+cell,realizes,cell,2
+chemical,inheres in,chemical,2
+unknown,has phenotype,unknown,2
+disease,part of progression of disease,disease,2
+cell,derived from cell line,cell,2
+catalyst,has vaccine protective antigen,catalyst,2
+cell,capable of part of,go,2
+disease,has modifier,anatomy,2
+organism,has part,gene,2
+cell,located_in,anatomy,2
+disease,disease has feature,unknown,2
+unknown,phenotype of,unknown,2
+anatomy,directly develops from,anatomy,2
+gene,is genome of organism,organism,2
+anatomy,located_in,disease,2
+anatomy,during which ends,anatomy,2
+cell,derived from anatomic part,disease,2
+cell,type,phenotype,2
+phenotype,interacts_with,phenotype,2
+anatomy,in distal side of,anatomy,2
+phenotype,interacts_with_an_exposure_receptor_via,phenotype,2
+unknown,has modifier,disease,2
+anatomy,capable of part of,unknown,2
+phenotype,part of,unknown,2
+gene,type,disease,2
+anatomy,surrounds,go,2
+cell,synapsed to,cell,2
+cell,part of,gene,2
+anatomy,type,cell,2
+gene,is gene of organism,organism,2
+anatomy,capable of,phenotype,2
+phenotype,has part,anatomy,2
+anatomy,distal_to,anatomy,2
+unknown,type,gene,2
+disease,disease triggers,go,2
+chemical,part of,anatomy,2
+catalyst,inheres in,organism,2
+catalyst,immunizes against disease,disease,2
+unknown,adjacent to,anatomy,2
+cell,has_disease_location,disease,2
+disease,disease causes dysfunction of,anatomy,2
+anatomy,bounding layer of,cell,2
+phenotype,located_in,anatomy,2
+anatomy,develops_from,cell,2
+phenotype,occurs in,cell,2
+phenotype,bearer of,phenotype,2
+unknown,has part,anatomy,2
+anatomy,in proximal side of,anatomy,2
+phenotype,occurs in,go,2
+phenotype,part of,go,2
+unknown,has parent hydride,chemical,2
+catalyst,has subunit vaccine antigen,catalyst,2
+chemical,in taxon,organism,2
+go,has part,unknown,1
+cell,derives_from,organism,1
+disease,realizes,disease,1
+phenotype,has_quality,unknown,1
+catalyst,has bacterial vaccine vector,catalyst,1
+catalyst,has component,catalyst,1
+anatomy,immediate transformation of,unknown,1
+unknown,has_quality,catalyst,1
+anatomy,located_in,go,1
+disease,has part,disease,1
+phenotype,towards,phenotype,1
+cell,occurs in,anatomy,1
+disease,located_in,disease,1
+anatomy,has_role,anatomy,1
+chemical,has member,chemical,1
+anatomy,output_of,phenotype,1
+anatomy,input of,phenotype,1
+catalyst,type,disease,1
+anatomy,composed primarily of,organism,1
+phenotype,part of,chemical,1
+disease,has onset,phenotype,1
+chemical,has input,chemical,1
+unknown,disease has feature,phenotype,1
+anatomy,existence ends during or before,anatomy,1
+unknown,capable of,go,1
+anatomy,causal agent in,anatomy,1
+disease,has participant at all times,disease,1
+anatomy,immediately anterior to,anatomy,1
+phenotype,interacts_with_an_exposure stressor_via,phenotype,1
+unknown,connected to,anatomy,1
+protein,has part,unknown,1
+rna,guided_by,rna,1
+catalyst,<none>,catalyst,1
+phenotype,inheres in at all times,disease,1
+anatomy,has part,organism,1
+disease,in taxon,organism,1
+catalyst,concretizes,catalyst,1
+rna,transcribed_from,rna,1
+chemical,inheres in,phenotype,1
+anatomy,formed as result of,go,1
+catalyst,has vaccine virmugen,catalyst,1
+anatomy,starts with,anatomy,1
+phenotype,characteristic of part of,chemical,1
+anatomy,ends with,anatomy,1
+anatomy,overlaps,unknown,1
+chemical,part of,chemical,1
+anatomy,adjacent to,go,1
+chemical,is enantiomer of,unknown,1
+phenotype,participates in,anatomy,1
+cell,produces,go,1
+anatomy,bearer of,phenotype,1
+phenotype,has habitat,anatomy,1
+disease,disease has basis in disruption of,unknown,1
+cell,has_role,cell,1
+phenotype,has occurrent part,phenotype,1
+cell,preceded by,go,1
+unknown,immunizes host,organism,1
+disease,disease causes dysfunction of,gene,1
+gene,type,catalyst,1
+anatomy,contains process,anatomy,1
+catalyst,has subunit vaccine antigen,chemical,1
+anatomy,layer part of,anatomy,1
+unknown,has modifier,rna,1
+cell,in taxon,organism,1
+anatomy,regulates (processual),anatomy,1
+organism,type,anatomy,1
+phenotype,towards,protein,1
+unknown,disease arises from feature,phenotype,1
+unknown,has potential to develop into,anatomy,1
+anatomy,bounding layer of,unknown,1
+disease,has_disease_location,anatomy,1
+unknown,is enantiomer of,chemical,1
+anatomy,determined by part of,anatomy,1
+unknown,has_role,catalyst,1
+cell,derived from organism,anatomy,1
+catalyst,has participant,catalyst,1
+anatomy,has_quality,unknown,1
+protein,involved_in,go,1
+disease,disease has basis in dysfunction of,chemical,1
+cell,has_high_plasma_membrane_amount,unknown,1
+anatomy,immediately posterior to,anatomy,1
+disease,disease arises from feature,unknown,1
+cell,derives from patient having disease,cell,1
+disease,predisposes towards,phenotype,1
+disease,disease has basis in accumulation of,chemical,1
+unknown,has function,catalyst,1
+catalyst,has vaccine antigen,protein,1
+anatomy,participates in,anatomy,1
+unknown,contributes to morphology of,anatomy,1
+protein,part of,protein,1
+anatomy,derives_from,chemical,1
+cell,cell line cell-induced adenocarcinoma formation in mouse,gene,1
+protein,has component,unknown,1
+chemical,is tautomer of,unknown,1
+unknown,capable of part of,go,1
+phenotype,in right side of,anatomy,1
+disease,contained_in,disease,1
+phenotype,existence overlaps,go,1
+catalyst,immunizes against microbe,unknown,1
+cell,induced by cell culture reagent,chemical,1
+catalyst,DNA vaccine expresses protein antigen,catalyst,1
+phenotype,realizes,phenotype,1
+anatomy,trunk_part_of,anatomy,1
+protein,derives_from,chemical,1
+catalyst,has boost vaccine,catalyst,1
+catalyst,role of,catalyst,1
+chemical,has food substance analog,chemical,1
+catalyst,has viral vaccine vector,catalyst,1
+anatomy,develops_from,unknown,1
+anatomy,composed primarily of,protein,1
+disease,realized in response to stimulus,protein,1
+chemical,has input,anatomy,1
+cell,has participant,chemical,1
+go,has part,protein,1
+unknown,characteristic of part of,anatomy,1
+anatomy,adjacent to,cell,1
+cell,has output,disease,1
+unknown,has disease,disease,1
+anatomy,synapsed by,cell,1
+cell,derived from organism,cell,1
+go,is ubiquitination,go,1
+anatomy,extends_fibers_into,cell,1
+catalyst,has disposition,catalyst,1
+anatomy,posteriorly connected to,anatomy,1
+go,ends_during,go,1
+anatomy,aboral to,anatomy,1
+phenotype,produced by,anatomy,1
+disease,realized in response to stimulus,go,1
+unknown,negatively regulates,go,1
+gene,has_role,catalyst,1
+disease,disease has inflammation site,cell,1
+phenotype,in left side of,anatomy,1
+cell,is disease model for,anatomy,1
+cell,derived from anatomic part,organism,1
+go,is kinase activity,go,1
+unknown,has part,go,1
+cell,overexpresses gene,protein,1
+disease,has_disease_location,cell,1
+catalyst,has prime vaccine,catalyst,1
+catalyst,realizes,catalyst,1
+anatomy,has 2D boundary,anatomy,1
+cell,directly develops from,cell,1
+catalyst,vaccine organism secretes,catalyst,1
+unknown,is tautomer of,chemical,1
+anatomy,has potential to developmentally contribute to,cell,1
+phenotype,has participant at all times,phenotype,1
