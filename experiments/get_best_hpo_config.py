@@ -1,50 +1,56 @@
 """
-get_best_hpo_config.py — pull the best hyperparameter configuration(s) from a finished (or
-running) W&B HPO sweep and save them ready to use.
+get_best_hpo_config.py — pull the best hyperparameter config(s) from a W&B HPO sweep and
+save them ready to use. QUERIES W&B ONLY — it does NOT run any HPO, so it works while a
+sweep is still running (it just ranks whatever trials are logged so far).
 
-The E2 sweep (tuning_hyperparameter.py) logs every trial to W&B under projects
-  RelationalPKT-<TASK>-<model>     e.g. RelationalPKT-DTI-compgcn, RelationalPKT-DTI-rgcn
-but does NOT persist the winning config. This does: it ranks the trials by the composite
-metric and writes the best config per model into:
-  experiments/hpo_best/<TASK>_<model>_best.json
-and prints a block ready to paste into src/models_params.json (optionally injects it with
---write, under config name PKT-<TASK>-best).
+The E2 sweep logs every trial to projects  RelationalPKT-<TASK>-<model>
+(e.g. RelationalPKT-DTI-compgcn, RelationalPKT-DTI-rgcn). This tool, per model:
+  * ranks trials by the composite metric,
+  * writes the winning config to experiments/hpo_best/<TASK>_<model>_best.json,
+  * writes a leaderboard of the top trials to experiments/hpo_best/<TASK>_<model>_leaderboard.csv,
+  * with --write, injects the best configs into src/models_params.json as PKT-<TASK>-best.
 
-Requires:  pip install wandb && wandb login
+Requires:  wandb login  (or WANDB_API_KEY set).
 Usage:
-  python experiments/get_best_hpo_config.py --task DTI
-  python experiments/get_best_hpo_config.py --task TREATS --metric final_mixed_metric --write
+  python experiments/get_best_hpo_config.py --task DTI            # best-so-far, saves reports
+  python experiments/get_best_hpo_config.py --task DTI --write    # + inject into models_params.json
+  python experiments/get_best_hpo_config.py --task TREATS --metric final_mixed_metric
 """
 import argparse
+import csv
 import json
 import os
 from pathlib import Path
 
-# hyperparameter keys that belong in src/models_params.json (per model)
 PARAM_KEYS = ["conv_layer_num", "dropout", "layer_0", "layer_1", "layer_2", "mlp_out_layer",
               "learning_rate", "opn", "grad_norm", "num_bases", "regularization",
               "weight_decay", "scheduler_gamma", "model_name"]
+REPORT_METRICS = ["val_mixed_metric", "final_mixed_metric", "val_auroc", "val_auprc", "val_mrr",
+                  "test_auroc", "test_auprc", "test_mrr"]
 
 DEFAULT_ENTITY = os.environ.get("WANDB_ENTITY", "giovannimaria-defilippis-university-of-naples-federico-ii")
 OUT_DIR = Path(__file__).resolve().parent / "hpo_best"
 PARAMS_JSON = Path(__file__).resolve().parents[1] / "src" / "models_params.json"
 
 
-def best_run(api, entity, project, metric):
-    """Return (best_value, config, run_name) for the highest `metric` in a project."""
-    best = None
+def ranked_runs(api, entity, project, metric):
+    """Return runs sorted by `metric` desc: list of (value, config, summary, name, state)."""
+    out = []
     try:
         runs = api.runs(f"{entity}/{project}")
     except Exception as e:
         print(f"  [!] cannot read project {project}: {e}")
-        return None
+        return out
     for r in runs:
         v = r.summary.get(metric)
         if v is None:
             continue
-        if best is None or v > best[0]:
-            best = (float(v), dict(r.config), r.name)
-    return best
+        try:
+            out.append((float(v), dict(r.config), dict(r.summary), r.name, r.state))
+        except Exception:
+            continue
+    out.sort(key=lambda x: x[0], reverse=True)
+    return out
 
 
 def main():
@@ -54,32 +60,43 @@ def main():
     ap.add_argument("--entity", default=DEFAULT_ENTITY)
     ap.add_argument("--metric", default="val_mixed_metric",
                     help="metric to rank by (default val_mixed_metric; or final_mixed_metric)")
+    ap.add_argument("--top", type=int, default=15, help="leaderboard length")
     ap.add_argument("--write", action="store_true",
-                    help="also inject the best configs into src/models_params.json as PKT-<TASK>-best")
+                    help="inject the best configs into src/models_params.json as PKT-<TASK>-best")
     args = ap.parse_args()
 
     import wandb
     api = wandb.Api()
     OUT_DIR.mkdir(exist_ok=True)
 
-    task_config = {}   # {model: best_param_dict}
+    task_config = {}
     for model in args.models:
         project = f"RelationalPKT-{args.task}-{model}"
         print(f"\n[{project}] ranking by '{args.metric}' ...")
-        b = best_run(api, args.entity, project, args.metric)
-        if b is None:
-            print(f"  no runs with metric '{args.metric}' — skipping")
+        runs = ranked_runs(api, args.entity, project, args.metric)
+        if not runs:
+            print(f"  no runs with metric '{args.metric}' yet — skipping")
             continue
-        value, config, name = b
-        params = {k: config[k] for k in PARAM_KEYS if k in config}
+        print(f"  {len(runs)} trials with metric; best = {runs[0][0]:.4f} ({runs[0][3]}, {runs[0][4]})")
+
+        # best config -> JSON (+ collect for models_params.json)
+        best_val, best_cfg, _, best_name, _ = runs[0]
+        params = {k: best_cfg[k] for k in PARAM_KEYS if k in best_cfg}
         params["model_name"] = model
         task_config[model] = params
-        print(f"  best run: {name}  |  {args.metric} = {value:.4f}")
-        print(json.dumps(params, indent=2))
-        out = OUT_DIR / f"{args.task}_{model}_best.json"
-        out.write_text(json.dumps({"metric": args.metric, "value": value,
-                                   "run": name, "params": params}, indent=2))
-        print(f"  saved -> {out}")
+        (OUT_DIR / f"{args.task}_{model}_best.json").write_text(json.dumps(
+            {"metric": args.metric, "value": best_val, "run": best_name, "params": params}, indent=2))
+
+        # leaderboard -> CSV (top N)
+        lb_path = OUT_DIR / f"{args.task}_{model}_leaderboard.csv"
+        with open(lb_path, "w", newline="", encoding="utf-8") as fh:
+            w = csv.writer(fh)
+            w.writerow(["rank", "run", "state"] + REPORT_METRICS + PARAM_KEYS)
+            for i, (val, cfg, summ, name, state) in enumerate(runs[: args.top], 1):
+                w.writerow([i, name, state]
+                           + [summ.get(m, "") for m in REPORT_METRICS]
+                           + [cfg.get(k, "") for k in PARAM_KEYS])
+        print(f"  saved: {args.task}_{model}_best.json  +  {lb_path.name}")
 
     if args.write and task_config:
         with open(PARAMS_JSON) as f:
@@ -88,11 +105,9 @@ def main():
         allp[key] = task_config
         with open(PARAMS_JSON, "w") as f:
             json.dump(allp, f, indent=4)
-        print(f"\n[i] injected into {PARAMS_JSON} as '{key}'.")
-        print(f"    Use it in E1:  HP_CONFIG={key} bash experiments/e1_main_training.sh")
+        print(f"\n[i] injected into {PARAMS_JSON} as '{key}'  ->  HP_CONFIG={key} bash experiments/e1_main_training.sh")
     elif task_config:
-        print(f"\n[i] To use in E1, add the block above to src/models_params.json under a "
-              f"config name (e.g. 'PKT-{args.task}-best'), or re-run with --write.")
+        print(f"\n[i] add the best block(s) to src/models_params.json, or re-run with --write.")
 
 
 if __name__ == "__main__":
