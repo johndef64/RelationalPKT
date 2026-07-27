@@ -12,10 +12,11 @@ source experiments/config.sh
 
 run_one () {  # $1=tsv  $2=task  $3=model
   local tsv="$1" task="$2" model="$3"
+  local cfg; cfg="$(resolve_config "$task")"   # PKT-<task>-best if available, else $HP_CONFIG
   local log="${LOG_DIR}/e1_${task}_${model}_$(date +%Y%m%d_%H%M%S).log"
-  echo "[E1] task=$task model=$model -> $log"
+  echo "[E1] task=$task model=$model config=$cfg -> $log"
   python train_and_eval.py \
-    --tsv "$tsv" --task "$task" --model "$model" --config "$HP_CONFIG" \
+    --tsv "$tsv" --task "$task" --model "$model" --config "$cfg" \
     --runs "$RUNS" --epochs "$EPOCHS" $COMMON_FLAGS 2>&1 | tee "$log"
 }
 

@@ -18,9 +18,23 @@ export TGT_A="Protein"
 export TGT_B="Disease"
 
 # ---- model / hyperparameter config (key in src/models_params.json) ----
+# HP_CONFIG is the FALLBACK config used when no tuned PKT-<TASK>-best exists yet.
 # BIOKG-128 = DRKG-scale biomedical config (right scale for PKT ~66-94k nodes).
 export HP_CONFIG="${HP_CONFIG:-BIOKG-128}"
 export MODELS="${MODELS:-compgcn rgcn}"    # primary + baseline
+
+# Auto-select the tuned config PKT-<TASK>-best from src/models_params.json when present,
+# otherwise fall back to $HP_CONFIG. Set USE_BEST=0 to always use $HP_CONFIG (e.g. baselines).
+export USE_BEST="${USE_BEST:-1}"
+resolve_config () {   # $1 = task interaction (DTI / TREATS); echoes the config name to use
+  local want="PKT-$1-best"
+  if [ "$USE_BEST" = "1" ] && \
+     python -c "import json,sys;sys.exit(0 if '$want' in json.load(open('src/models_params.json')) else 1)" 2>/dev/null; then
+    echo "$want"
+  else
+    echo "$HP_CONFIG"
+  fi
+}
 
 # ---- training budget (PathogenKG Table-4 protocol) ----
 export RUNS="${RUNS:-12}"

@@ -28,7 +28,8 @@ train () {  # $1=tag  $2=tsv  ... extra flags
   local tag="$1" tsv="$2"; shift 2
   local log="${LOG_DIR}/e3_${tag}_$(date +%Y%m%d_%H%M%S).log"
   echo "[E3] $tag -> $log"
-  python train_and_eval.py --tsv "$tsv" --task "$TASK_A" --model "$MODEL" --config "$HP_CONFIG" \
+  local cfg; cfg="$(resolve_config "$TASK_A")"   # PKT-DTI-best if available, else $HP_CONFIG
+  python train_and_eval.py --tsv "$tsv" --task "$TASK_A" --model "$MODEL" --config "$cfg" \
     --runs "$ABL_RUNS" --epochs "$ABL_EPOCHS" --early_stopping --patience "$PATIENCE" --eval_filtered "$@" \
     2>&1 | tee "$log"
 }
