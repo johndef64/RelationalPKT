@@ -1,25 +1,34 @@
-# RelationalPKT — Heterogeneous KG Link Prediction for Drug Repurposing on PheKnowLator
+# RelationalBioKG — Relational Link Prediction on Biomedical Knowledge Graphs for Drug Repurposing
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![PyG](https://img.shields.io/badge/PyTorch_Geometric-2.0+-3C2179?logo=pytorch&logoColor=white)](https://pytorch-geometric.readthedocs.io/)
 [![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-**RelationalPKT applies the PathogenKG method — heterogeneous knowledge-graph link prediction
-for drug repurposing (R-GCN / CompGCN encoders + DistMult decoder) — to the human
-[PheKnowLator](https://github.com/callahantiff/PheKnowLator) (PKT) knowledge graph.**
+**RelationalBioKG is a framework for drug repurposing by heterogeneous knowledge-graph link
+prediction: relational GNN encoders (R-GCN / CompGCN) + a DistMult decoder, trained on the
+topology of a biomedical KG (lookup embeddings, no node features).** Given a biomedical KG and a
+target relation (e.g. drug→target, drug→disease), it trains a link-prediction model and produces a
+ranked shortlist of novel candidates, with a full protocol for tuning, ablation, and human review.
 
-PathogenKG was developed and validated in the *bacterial* domain (STRING PPI + COG orthology +
-GO + DrugBank). RelationalPKT reuses the **same code and the same experimental protocol**,
-unchanged, on a *human* biomedical KG — turning the method into a real, human-domain component of
-the framework instead of a separate bacterial graph. The encoders use **lookup embeddings (no node
-features)**, so the featureless PKT nodes are used as-is: this is the topology-only setting.
+The method originates from **PathogenKG** (developed and validated in the *bacterial* domain: STRING
+PPI + COG orthology + GO + DrugBank) and generalises the **same code and experimental protocol**,
+unchanged, to any human biomedical KG. Because the encoders are **featureless (topology-only)**, any
+KG whose nodes lack features can be plugged in as-is.
+
+### Reference use case in this repo: PheKnowLator
+
+The application shipped and fully worked through here is the human
+**[PheKnowLator](https://github.com/callahantiff/PheKnowLator) (PKT)** knowledge graph — a large
+open human biomedical KG (chemicals, proteins, genes, GO, pathways, diseases, phenotypes, variants).
+It is the concrete case study used to demonstrate the framework end-to-end; the same pipeline runs
+on other biomedical KGs of comparable scale (DRKG, Hetionet, TxGNN-KG) by swapping the input TSV.
 
 ---
 
-## Two repurposing tasks
+## Two repurposing tasks (on the PheKnowLator case study)
 
-The same link-prediction machinery is run on two target relations, selected after analysing the KG
+The link-prediction machinery is run on two target relations, selected after analysing the KG
 (native coverage is sufficient — no external DrugBank injection needed):
 
 | Task | Target relation | Meaning | Edges | Drugs | Targets |
@@ -68,21 +77,24 @@ pair is reduced to one direction (symmetric PPI deduped 617k → 308,704). Built
 [`analysis/06_build_subgraphs.py`](analysis/06_build_subgraphs.py); stats in
 [`analysis/out/06_subgraph_stats.md`](analysis/out/06_subgraph_stats.md).
 
+To run the framework on a **different** biomedical KG, produce a TSV in the same
+`head <TAB> interaction <TAB> tail` format and point `--tsv` at it — no other change is required.
+
 ---
 
 ## Repository structure
 
 ```
-RelationalPKT/
+RelationalBioKG/
 ├── train_and_eval.py            # training & evaluation (added: --config)
 ├── drug_eval.py                 # compound-centric repurposing eval (added: --target_type)
 ├── drug_eval_results.py         # summarise drug-eval outputs
-├── tuning_hyperparameter.py     # Bayesian W&B HPO (logs to project RelationalPKT)
+├── tuning_hyperparameter.py     # Bayesian W&B HPO (logs to project RelationalBioKG)
 ├── expert_review_script.py      # human 3-tier expert review driver (cohort → review sheet)
 ├── src/                         # encoders (hetero_rgcn/compgcn/rgat), utils, metrics, params
 │
 ├── dataset/
-│   ├── PKT/                     # raw PheKnowLator KG (nodes.json + edges.json, zipped)
+│   ├── PKT/                     # reference KG: raw PheKnowLator (nodes.json + edges.json, zipped)
 │   └── PKT_subgraphs/           # built task subgraphs (+ ablation/, node_labels.tsv)
 │
 ├── analysis/                    # KG analysis & subgraph builders (01–08_*.py) + out/
@@ -120,7 +132,7 @@ GPU — see the TDR note in `experiments/README.md`). Full experiment runs are m
 ```bash
 conda activate gnn
 
-# 1. Build the task subgraphs from PKT (one-time)
+# 1. Build the task subgraphs from the reference PKT KG (one-time)
 python analysis/06_build_subgraphs.py
 
 # 2. Train (Task A / DTI, CompGCN, BIOKG-128 config)
@@ -146,7 +158,8 @@ Full, scripted pipeline (both tasks, HPO, ablations, repurposing) lives in
 Evaluation protocol (unchanged from PathogenKG): edge-level stratified split, multi-seed, focal loss
 (α=0.25, γ=3.0) + adversarial negative weighting (α_adv=2.0), oversample ×5 / undersample ×0.5,
 type-constrained **filtered** metrics — AUROC, AUPRC, MRR, Hits@1/3/10 and composite
-**M = 0.2·AUROC + 0.4·AUPRC + 0.4·MRR**.
+**M = 0.2·AUROC + 0.4·AUPRC + 0.4·MRR**. The composite is optimised in validation and reported
+in test with the identical ranking protocol.
 
 ---
 
@@ -180,9 +193,9 @@ A deliberate, honest distinction (see `experiments/README.md` for the full discu
 
 ## Credits & upstream
 
-RelationalPKT builds directly on the **PathogenKG** codebase and method
+RelationalBioKG builds directly on the **PathogenKG** codebase and method
 (De Filippis, Tommasino, Rinaldi — *PathogenKG: Cross-Species Drug Repurposing via Heterogeneous
-Knowledge Graph Link Prediction*, ECML PKDD 2026). The knowledge graph is
+Knowledge Graph Link Prediction*, ECML PKDD 2026). The reference knowledge graph used in this repo is
 **[PheKnowLator](https://github.com/callahantiff/PheKnowLator)**.
 
 ## License

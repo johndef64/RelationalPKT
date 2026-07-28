@@ -250,20 +250,20 @@
         }
     },
     "PKT-DTI-best": {
-        "compgcn": {
-            "conv_layer_num": 1,
+         "compgcn": {
+            "conv_layer_num": 2,
             "dropout": 0.2,
-            "layer_0": 128,
-            "layer_1": 128,
-            "layer_2": 200,
+            "layer_0": 200,
+            "layer_1": 200,
+            "layer_2": 64,
             "mlp_out_layer": 200,
             "learning_rate": 0.003,
             "opn": "corr",
             "grad_norm": 2,
-            "num_bases": 15,
-            "regularization": 0.005,
+            "num_bases": 10,
+            "regularization": 0.0001,
             "weight_decay": 0.05,
-            "scheduler_gamma": 0.997,
+            "scheduler_gamma": 0.999,
             "model_name": "compgcn"
         },
         "rgcn": {
@@ -282,20 +282,20 @@
         }
     },
     "PKT-TREATS-best": {
-        "compgcn": {
-            "conv_layer_num": 1,
+         "compgcn": {
+            "conv_layer_num": 2,
             "dropout": 0.2,
-            "layer_0": 128,
-            "layer_1": 128,
-            "layer_2": 200,
+            "layer_0": 200,
+            "layer_1": 200,
+            "layer_2": 64,
             "mlp_out_layer": 200,
             "learning_rate": 0.003,
             "opn": "corr",
             "grad_norm": 2,
-            "num_bases": 15,
-            "regularization": 0.005,
+            "num_bases": 10,
+            "regularization": 0.0001,
             "weight_decay": 0.05,
-            "scheduler_gamma": 0.997,
+            "scheduler_gamma": 0.999,
             "model_name": "compgcn"
         },
         "rgcn": {
