@@ -250,7 +250,7 @@
         }
     },
     "PKT-DTI-best": {
-         "compgcn": {
+        "compgcn": {
             "conv_layer_num": 2,
             "dropout": 0.2,
             "layer_0": 200,
@@ -284,17 +284,17 @@
     "PKT-TREATS-best": {
         "compgcn": {
             "conv_layer_num": 2,
-            "dropout": 0.4,
+            "dropout": 0.3,
             "layer_0": 128,
-            "layer_1": 128,
+            "layer_1": 64,
             "layer_2": 200,
             "mlp_out_layer": 200,
             "learning_rate": 0.003,
             "opn": "sub",
-            "grad_norm": 1.5,
+            "grad_norm": 0.5,
             "num_bases": 20,
             "regularization": 0.01,
-            "weight_decay": 0.005,
+            "weight_decay": 0.001,
             "scheduler_gamma": 0.995,
             "model_name": "compgcn"
         },
@@ -312,4 +312,5 @@
             "scheduler_gamma": 0.999,
             "model_name": "rgcn"
         }
+    }
 }
